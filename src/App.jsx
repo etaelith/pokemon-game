@@ -5,10 +5,11 @@ import Pokemon from "./components/Pokemon";
 
 import Container from "./components/Container";
 import MemoTest from "./components/MemoTest";
-
+import extractData from "../src/utils/getMemo";
+const memolocal = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const App = () => {
   const [loading, setLoading] = useState(true);
-
+  const [memoData, setMemoData] = useState();
   const [pokemons, setPokemons] = useState();
 
   const [currentPageURL, setCurrentPageURL] = useState(
@@ -32,7 +33,8 @@ const App = () => {
   }, [currentPageURL]);
   return (
     <>
-      <MemoTest />
+      {loading ? <div>Loading</div> : <MemoTest pokemons={pokemons} />}
+
       <Container>
         {loading ? (
           <div>loading</div>

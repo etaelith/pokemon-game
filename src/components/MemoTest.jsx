@@ -1,82 +1,109 @@
 import React, { useEffect, useState } from "react";
 import "../styles/memotest.css";
 import ButtonWin from "./ButtonWin";
-const IMAGES = [
-  "https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png",
-  "https://assets.pokemon.com/assets/cms2/img/pokedex/full/002.png",
-  "https://assets.pokemon.com/assets/cms2/img/pokedex/full/003.png",
-  "https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png",
-  "https://assets.pokemon.com/assets/cms2/img/pokedex/full/005.png",
-  "https://assets.pokemon.com/assets/cms2/img/pokedex/full/006.png",
-  "https://assets.pokemon.com/assets/cms2/img/pokedex/full/007.png",
-  "https://assets.pokemon.com/assets/cms2/img/pokedex/full/008.png",
-  "https://assets.pokemon.com/assets/cms2/img/pokedex/full/009.png",
-  "https://assets.pokemon.com/assets/cms2/img/pokedex/full/010.png",
-]
-  .flatMap((image) => [`a|${image}`, `b|${image}`])
-  .sort(() => Math.random() - 0.5);
-const MemoTest = () => {
+import extractData from "../utils/getMemo";
+import CardMemoTest from "./CardMemoTest";
+
+const MemoTest = ({ pokemons }) => {
   const [completed, setCompleted] = useState([]);
   const [selected, setSelected] = useState([]);
+  const [memoImages, setMemoImages] = useState([]);
+  const [test, setTest] = useState(null);
 
+  const [loading, setLoading] = useState(true);
+
+  function sumZeros(num, size) {
+    var s = num + "";
+    while (s.length < size) s = "0" + s;
+    return s;
+  }
+
+  //localstorage
+  useEffect(() => {
+    let resueltos = JSON.parse(localStorage.getItem("players")).length;
+    const data = extractData(pokemons, resueltos);
+
+    const tank = [];
+    data.map((e) => {
+      tank.push(
+        `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${sumZeros(
+          e.index,
+          3
+        )}.png`
+      );
+    });
+    setTest(tank);
+  }, []);
+  useEffect(() => {
+    if (test) {
+      const sortedMemoImages = [];
+      test.forEach((image, index) => {
+        sortedMemoImages.push({
+          id: `a|${image}`,
+          originalIndex: index,
+        });
+        sortedMemoImages.push({
+          id: `b|${image}`,
+          originalIndex: index,
+        });
+      });
+      setMemoImages(sortedMemoImages.sort(() => Math.random() - 0.5));
+      setLoading(false);
+    }
+  }, [test]);
+  //MemoTest
   useEffect(() => {
     if (selected.length === 2) {
-      if (selected[0].split("|")[1] === selected[1].split("|")[1]) {
+      if (selected[0].id.split("|")[1] === selected[1].id.split("|")[1]) {
         setCompleted((completed) => completed.concat(selected));
       }
       setTimeout(() => setSelected([]), 1000);
     }
   }, [selected]);
-
+  //alert win
   useEffect(() => {
-    if (completed.length === IMAGES.length) {
-      document.getElementById("dialog-default").showModal();
+    if (test !== null) {
+      if (completed.length === memoImages.length) {
+        document.getElementById("dialog-default").showModal();
+      }
     }
   }, [completed]);
+
   return (
     <>
-      {" "}
       <div
-        class="nes-text is-primary"
+        className="nes-text is-primary"
         style={{ marginBottom: "2em", marginTop: "2em" }}
       >
         Memo-test Pokemon
       </div>
-      <ul
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(128px, 1fr",
-          gap: 24,
-        }}
-      >
-        {IMAGES.map((image) => {
-          const [, url] = image.split("|");
-          const element = (
-            <li
-              onClick={() =>
-                selected.length < 2 &&
-                setSelected((selected) => selected.concat(image))
-              }
-              key={image}
-              style={{
-                padding: 12,
-                border: "1px solid #666",
-                borderRadius: 12,
-              }}
-            >
-              {selected.includes(image) || completed.includes(image) ? (
-                <img alt="icon" src={url}></img>
-              ) : (
-                <img
-                  alt="icon"
-                  src="https://raw.githubusercontent.com/devSalaz/pokedexAPI/626babbeeeb0e03a000546e97406b5c3e6697c43/src/assets/images/pokeball-icon.png"
-                ></img>
-              )}
-            </li>
-          );
-          return element;
-        })}
-      </ul>
+      {!test ? (
+        <div>Loading</div>
+      ) : (
+        <ul
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(128px, 1fr",
+            gap: 24,
+          }}
+        >
+          {memoImages.map((image, index) => {
+            const [, url] = image.id.split("|");
+            const element = (
+              <CardMemoTest
+                key={index}
+                selected={selected}
+                setSelected={setSelected}
+                completed={completed}
+                setCompleted={setCompleted}
+                image={image}
+                url={url}
+              />
+            );
+            return element;
+          })}
+        </ul>
+      )}
       <ButtonWin />
     </>
   );
