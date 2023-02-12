@@ -36,7 +36,12 @@ const MemoTest = () => {
   return (
     <>
       {" "}
-      <div class="nes-text is-primary" style={{marginBottom: "2em"}}>Memo-test Pokemon</div>
+      <div
+        class="nes-text is-primary"
+        style={{ marginBottom: "2em", marginTop: "2em" }}
+      >
+        Memo-test Pokemon
+      </div>
       <ul
         style={{
           display: "grid",
