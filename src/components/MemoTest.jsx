@@ -20,20 +20,51 @@ const MemoTest = ({ pokemons }) => {
 
   //localstorage
   useEffect(() => {
-    let resueltos = JSON.parse(localStorage.getItem("players")).length;
-    const data = extractData(pokemons, resueltos);
-
-    const tank = [];
-    data.map((e) => {
-      tank.push(
-        `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${sumZeros(
-          e.index,
-          3
-        )}.png`
-      );
-    });
-    setTest(tank);
+    if (window.localStorage) {
+      const resueltos = JSON.parse(localStorage.getItem("players"));
+      if (!resueltos) {
+        const array = JSON.stringify([]);
+        localStorage.setItem("players", array);
+        const tank = [];
+        const data = extractData(pokemons, 0);
+        data.map((e) => {
+          tank.push(
+            `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${sumZeros(
+              e.index,
+              3
+            )}.png`
+          );
+        });
+        setTest(tank);
+      }
+      if (resueltos < 1) {
+        const tank = [];
+        const data = extractData(pokemons, 0);
+        data.map((e) => {
+          tank.push(
+            `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${sumZeros(
+              e.index,
+              3
+            )}.png`
+          );
+        });
+        setTest(tank);
+      } else {
+        const tank = [];
+        const data = extractData(pokemons, resueltos.length);
+        data.map((e) => {
+          tank.push(
+            `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${sumZeros(
+              e.index,
+              3
+            )}.png`
+          );
+        });
+        setTest(tank);
+      }
+    }
   }, []);
+
   useEffect(() => {
     if (test) {
       const sortedMemoImages = [];
@@ -64,6 +95,15 @@ const MemoTest = ({ pokemons }) => {
   useEffect(() => {
     if (test !== null) {
       if (completed.length === memoImages.length) {
+        const players = JSON.parse(localStorage.getItem("players")) || [];
+        const lastNumber = players[players.length - 1] || 0;
+        const newNumbers = Array.from(
+          { length: 10 },
+          (_, i) => lastNumber + i + 1
+        );
+        players.push(...newNumbers);
+        localStorage.setItem("players", JSON.stringify(players));
+
         document.getElementById("dialog-default").showModal();
       }
     }
