@@ -56,9 +56,9 @@ const Pokemon = ({ url }) => {
             </div>
 
             <div className="types-container">
-              {pokemonData.types.map((type) => {
+              {pokemonData.types.map((type,index) => {
                 const element = (
-                  <div className={`type-tab ${type.type.name}`}>
+                  <div key={index} className={`type-tab ${type.type.name}`}>
                     <img src={defineIcon(type.type.name)}></img>
                     <div>{type.type.name}</div>
                   </div>

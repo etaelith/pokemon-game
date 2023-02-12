@@ -4,6 +4,7 @@ import "./App.css";
 import Pokemon from "./components/Pokemon";
 
 import Container from "./components/Container";
+import MemoTest from "./components/MemoTest";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -31,6 +32,7 @@ const App = () => {
   }, [currentPageURL]);
   return (
     <>
+      <MemoTest />
       <Container>
         {loading ? (
           <div>loading</div>

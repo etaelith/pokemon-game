@@ -54,6 +54,7 @@
     height: 100%;
     border-radius: 25px;
 }
+
 /* top container */
 .top-container {
     display: flex;
@@ -96,6 +97,7 @@
     position: relative;
     z-index: 2;
 }
+
 /* image container */
 .image-container {
     width: 100%;
@@ -105,6 +107,7 @@
 }
 
 .image-container .pokemon-img {
+
     width: 160px;
     position: relative;
     z-index: 2;
@@ -128,6 +131,7 @@
     margin: auto;
     z-index: 1;
 }
+
 /* types container */
 .types-container {
     position: relative;
@@ -164,4 +168,3 @@
 .types-container img {
     width: 13px;
 }
-
