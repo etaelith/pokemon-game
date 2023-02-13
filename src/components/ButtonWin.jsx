@@ -1,5 +1,3 @@
-import React from "react";
-
 const ButtonWin = () => {
   const handleClick = (e) => {
     e.preventDefault();

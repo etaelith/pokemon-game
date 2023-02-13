@@ -1,5 +1,3 @@
-import React from "react";
-
 const CardMemoTest = ({ selected, setSelected, completed, image, url }) => {
   return (
     <li

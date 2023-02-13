@@ -1,17 +1,13 @@
-import "../styles/pokemonCard.css";
-import "../styles/pokemonCardType.css";
 import defineIcon from "../utils/getIcon";
+import "../styles/pokemonCardType.css";
+import "../styles/pokemonCard.css";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
 const Pokemon = ({ url }) => {
   const [pokemonData, setPokemonData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [type, setType] = useState([]);
 
-  /*   function defineIcon(type) {
-    return eval(type + "Icon") || normalIcon;
-  } */
   function sumZeros(num, size) {
     var s = num + "";
     while (s.length < size) s = "0" + s;
@@ -21,7 +17,6 @@ const Pokemon = ({ url }) => {
     setLoading(true);
     axios.get(url).then((res) => {
       setPokemonData(res.data);
-      setType(res.types);
       setLoading(false);
     });
   }, []);
@@ -56,7 +51,7 @@ const Pokemon = ({ url }) => {
             </div>
 
             <div className="types-container">
-              {pokemonData.types.map((type,index) => {
+              {pokemonData.types.map((type, index) => {
                 const element = (
                   <div key={index} className={`type-tab ${type.type.name}`}>
                     <img src={defineIcon(type.type.name)}></img>

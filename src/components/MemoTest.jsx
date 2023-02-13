@@ -1,22 +1,17 @@
-import React, { useEffect, useState } from "react";
-import "../styles/memotest.css";
+import { useEffect, useState } from "react";
+
+import CardMemoTest from "./CardMemoTest";
 import ButtonWin from "./ButtonWin";
 import extractData from "../utils/getMemo";
-import CardMemoTest from "./CardMemoTest";
+import sumZeros from "../utils/getZeros";
+
+import "../styles/memotest.css";
 
 const MemoTest = ({ pokemons }) => {
   const [completed, setCompleted] = useState([]);
   const [selected, setSelected] = useState([]);
   const [memoImages, setMemoImages] = useState([]);
   const [test, setTest] = useState(null);
-
-  const [loading, setLoading] = useState(true);
-
-  function sumZeros(num, size) {
-    var s = num + "";
-    while (s.length < size) s = "0" + s;
-    return s;
-  }
 
   //localstorage
   useEffect(() => {
@@ -79,7 +74,6 @@ const MemoTest = ({ pokemons }) => {
         });
       });
       setMemoImages(sortedMemoImages.sort(() => Math.random() - 0.5));
-      setLoading(false);
     }
   }, [test]);
   //MemoTest
