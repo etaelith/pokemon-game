@@ -168,3 +168,9 @@
 .types-container img {
     width: 13px;
 }
+
+@media only screen and (max-width: 1120px) {
+    .card {
+        margin: 40px auto
+    }
+}

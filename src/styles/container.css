@@ -10,3 +10,27 @@
   justify-content: space-around;
   margin: 0 2em;
 }
+
+.container.pokemons {
+  width: 100%;
+  display: inline-grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media only screen and (max-width: 1120px) {
+  .container.pokemons {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 920px) {
+  .container.pokemons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media only screen and (max-width: 420px) {
+  .container.pokemons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
