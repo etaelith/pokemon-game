@@ -1,7 +1,15 @@
- li {
-    list-style-type: none;
+.container-memotest {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24;
+    margin-top: 1em
 }
+
 ul {
     max-width: 800px;
     margin: auto
+}
+
+li {
+    list-style-type: none;
 }

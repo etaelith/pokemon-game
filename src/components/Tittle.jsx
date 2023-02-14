@@ -8,7 +8,9 @@ const Tittle = ({ time, handleStart, lvl }) => {
       <div className="nes-container is-dark with-title">
         <p className="title">Container.is-dark</p>
         <p>
-          Good morning. Thou hast had a good night's sleep, I hope.
+          {lvl !== 0
+            ? `It's great to have you here! Are you ready to continue? Click the button below to begin.`
+            : `Welcome, adventurer! Your journey starts now. Click the button below to begin.`}
         </p>
         <div className="div-count">
           <button

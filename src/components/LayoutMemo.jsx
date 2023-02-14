@@ -8,7 +8,7 @@ const LayoutMemo = ({ pokemons }) => {
   const [isPaused, setIsPaused] = useState(true);
   const [time, setTime] = useState(0);
   const [lvl, setLvl] = useState(
-    parseInt(String(getLocal("players").length)[0]) || null
+    parseInt(String(getLocal("players").length)[0]) || 0
   );
   useEffect(() => {
     let interval = null;

@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import CardMemoTest from "./CardMemoTest";
 import extractData from "../utils/getMemo";
 import sumZeros from "../utils/getZeros";
+import { getLocal, setLocal } from "../utils/getLocalStorage";
 
 import "../styles/memotest.css";
-import { getLocal, setLocal } from "../utils/getLocalStorage";
 
 const MemoTest = ({ pokemons, handleReset }) => {
   const [completed, setCompleted] = useState([]);
@@ -93,13 +93,7 @@ const MemoTest = ({ pokemons, handleReset }) => {
       {!test ? (
         <div>Loading</div>
       ) : (
-        <ul
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(128px, 1fr",
-            gap: 24,
-          }}
-        >
+        <ul className="container-memotest">
           {memoImages.map((image, index) => {
             const [, url] = image.id.split("|");
             const element = (
