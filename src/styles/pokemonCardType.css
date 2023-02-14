@@ -1,18 +1,14 @@
 /* type grass */
-
-
 .fill-bg.grass {
   background-color: #a7db8d;
   border: solid 3px transparent;
   transition: border-color 500ms;
 }
-
 .card.grass {
   background-color: #a7db8d;
   border: solid 3px transparent;
   transition: border-color 500ms;
 }
-
 .card.grass::before {
   content: " ";
   position: absolute;
@@ -26,29 +22,22 @@
   filter: blur(18px);
   z-index: -2;
 }
-
 .type-tab.grass {
   background-color: #78c850;
 }
 
-
 /*Posion Type*/
-
-
 .fill-bg.poison {
   background-color: #c183c1;
   border: solid 3px transparent;
   transition: border-color 500ms;
 }
-
 .card.poison:hover .fill-bg.poison {
   border-color: #a040a0;
 }
-
 .card .type-tab.poison {
   background-color: #a040a0;
 }
-
 .card.poison::before {
   content: " ";
   position: absolute;
@@ -57,7 +46,6 @@
   width: 104%;
   height: 104%;
   background: linear-gradient(to right, #cc208e, #6713d2, #a040a0, #cc208e);
-
   border-radius: 25px;
   background-size: 400%;
   filter: blur(18px);
@@ -65,21 +53,17 @@
 }
 
 /*Fire Type*/
-
 .fill-bg.fire {
   background-color: #f5ac78;
   border: solid 3px transparent;
   transition: border-color 500ms;
 }
-
 .card.fire:hover .fill-bg.fire {
   border-color: #f08030;
 }
-
 .card .type-tab.fire {
   background-color: #f08030;
 }
-
 .card.fire::before {
   content: " ";
   position: absolute;
@@ -94,7 +78,6 @@
       #ffc400,
       #ff1361,
       #44107a);
-
   border-radius: 25px;
   background-size: 400%;
   filter: blur(18px);
@@ -102,21 +85,17 @@
 }
 
 /*Water Type*/
-
 .fill-bg.water {
   background-color: #9db7f5;
   border: solid 3px transparent;
   transition: border-color 500ms;
 }
-
 .card.water:hover .fill-bg.water {
   border-color: #6890f0;
 }
-
 .card .type-tab.water {
   background-color: #6890f0;
 }
-
 .card.water::before {
   content: " ";
   position: absolute;
@@ -132,21 +111,17 @@
 }
 
 /*Electric Type*/
-
 .fill-bg.electric {
   background-color: #fae078;
   border: solid 3px transparent;
   transition: border-color 500ms;
 }
-
 .card.electric:hover .fill-bg.electric {
   border-color: #f8d030;
 }
-
 .card .type-tab.electric {
   background-color: #f8d030;
 }
-
 .card.electric::before {
   content: " ";
   position: absolute;
@@ -162,21 +137,17 @@
 }
 
 /*Bug Type*/
-
 .fill-bg.bug {
   background-color: #c6d16e;
   border: solid 3px transparent;
   transition: border-color 500ms;
 }
-
 .card.bug:hover .fill-bg.bug {
   border-color: #a8b820;
 }
-
 .card .type-tab.bug {
   background-color: #a8b820;
 }
-
 .card.bug::before {
   content: " ";
   position: absolute;
@@ -193,21 +164,17 @@
 }
 
 /*Dragon Type*/
-
 .fill-bg.dragon {
   background-color: #a27dfa;
   border: solid 3px transparent;
   transition: border-color 500ms;
 }
-
 .card.dragon:hover .fill-bg.dragon {
   border-color: #7038f8;
 }
-
 .card .type-tab.dragon {
   background-color: #7038f8;
 }
-
 .card.dragon::before {
   content: " ";
   position: absolute;
@@ -223,21 +190,17 @@
 }
 
 /*Fairy Type*/
-
 .fill-bg.fairy {
   background-color: #f4bdc9;
   border: solid 3px transparent;
   transition: border-color 500ms;
 }
-
 .card.fairy:hover .fill-bg.fairy {
   border-color: #ee99ac;
 }
-
 .card .type-tab.fairy {
   background-color: #ee99ac;
 }
-
 .card.fairy::before {
   content: " ";
   position: absolute;
@@ -254,21 +217,17 @@
 }
 
 /*Ghost Type*/
-
 .fill-bg.ghost {
   background-color: #a292bc;
   border: solid 3px transparent;
   transition: border-color 500ms;
 }
-
 .card.ghost:hover .fill-bg.ghost {
   border-color: #705898;
 }
-
 .card .type-tab.ghost {
   background-color: #705898;
 }
-
 .card.ghost::before {
   content: " ";
   position: absolute;
@@ -285,21 +244,17 @@
 }
 
 /*Ground Type*/
-
 .fill-bg.ground {
   background-color: #ebd69d;
   border: solid 3px transparent;
   transition: border-color 500ms;
 }
-
 .card.ground:hover .fill-bg.ground {
   border-color: #e0c068;
 }
-
 .card .type-tab.ground {
   background-color: #e0c068;
 }
-
 .card.ground::before {
   content: " ";
   position: absolute;
@@ -315,21 +270,17 @@
 }
 
 /*Ice Type*/
-
 .fill-bg.ice {
   background-color: #bce6e6;
   border: solid 3px transparent;
   transition: border-color 500ms;
 }
-
 .card.ice:hover .fill-bg.ice {
   border-color: #98d8d8;
 }
-
 .card .type-tab.ice {
   background-color: #98d8d8;
 }
-
 .card.ice::before {
   content: " ";
   position: absolute;
@@ -345,7 +296,6 @@
 }
 
 /*Normal Type*/
-
 .fill-bg.normal {
   background-color: #c6c6a7;
   border: solid 3px transparent;

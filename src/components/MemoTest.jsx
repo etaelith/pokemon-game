@@ -1,34 +1,29 @@
 import { useEffect, useState } from "react";
 
 import CardMemoTest from "./CardMemoTest";
-import ButtonWin from "./ButtonWin";
 import extractData from "../utils/getMemo";
 import sumZeros from "../utils/getZeros";
 
 import "../styles/memotest.css";
+import { getLocal, setLocal } from "../utils/getLocalStorage";
 
-const MemoTest = ({ pokemons }) => {
+const MemoTest = ({ pokemons, handleReset }) => {
   const [completed, setCompleted] = useState([]);
   const [selected, setSelected] = useState([]);
   const [memoImages, setMemoImages] = useState([]);
   const [test, setTest] = useState(null);
-
+  const IMAGE_URL = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/";
   //localstorage
   useEffect(() => {
     if (window.localStorage) {
-      const resueltos = JSON.parse(localStorage.getItem("players"));
+      const resueltos = getLocal("players");
       if (!resueltos) {
         const array = JSON.stringify([]);
-        localStorage.setItem("players", array);
+        setLocal("players", array);
         const tank = [];
         const data = extractData(pokemons, 0);
         data.map((e) => {
-          tank.push(
-            `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${sumZeros(
-              e.index,
-              3
-            )}.png`
-          );
+          tank.push(`${IMAGE_URL}${sumZeros(e.index, 3)}.png`);
         });
         setTest(tank);
       }
@@ -36,24 +31,14 @@ const MemoTest = ({ pokemons }) => {
         const tank = [];
         const data = extractData(pokemons, 0);
         data.map((e) => {
-          tank.push(
-            `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${sumZeros(
-              e.index,
-              3
-            )}.png`
-          );
+          tank.push(`${IMAGE_URL}${sumZeros(e.index, 3)}.png`);
         });
         setTest(tank);
       } else {
         const tank = [];
         const data = extractData(pokemons, resueltos.length);
         data.map((e) => {
-          tank.push(
-            `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${sumZeros(
-              e.index,
-              3
-            )}.png`
-          );
+          tank.push(`${IMAGE_URL}${sumZeros(e.index, 3)}.png`);
         });
         setTest(tank);
       }
@@ -89,28 +74,22 @@ const MemoTest = ({ pokemons }) => {
   useEffect(() => {
     if (test !== null) {
       if (completed.length === memoImages.length) {
-        const players = JSON.parse(localStorage.getItem("players")) || [];
+        const players = getLocal("players");
         const lastNumber = players[players.length - 1] || 0;
         const newNumbers = Array.from(
           { length: 10 },
           (_, i) => lastNumber + i + 1
         );
         players.push(...newNumbers);
-        localStorage.setItem("players", JSON.stringify(players));
+        setLocal("players", JSON.stringify(players));
 
-        document.getElementById("dialog-default").showModal();
+        handleReset();
       }
     }
   }, [completed]);
 
   return (
     <>
-      <div
-        className="nes-text is-primary"
-        style={{ marginBottom: "2em", marginTop: "2em" }}
-      >
-        Memo-test Pokemon
-      </div>
       {!test ? (
         <div>Loading</div>
       ) : (
@@ -138,7 +117,6 @@ const MemoTest = ({ pokemons }) => {
           })}
         </ul>
       )}
-      <ButtonWin />
     </>
   );
 };

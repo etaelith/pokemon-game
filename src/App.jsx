@@ -1,43 +1,39 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import "./App.css";
 import Pokemon from "./components/Pokemon";
-
 import Container from "./components/Container";
-import MemoTest from "./components/MemoTest";
+import LayoutMemo from "./components/LayoutMemo";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
 
   const [pokemons, setPokemons] = useState();
-
-  const [currentPageURL, setCurrentPageURL] = useState(
-    // max pokemons ?limit=1008 https://bulbapedia.bulbagarden.net/wiki/Generation
-    "https://pokeapi.co/api/v2/pokemon/?limit=151"
-  );
+  const URL = "https://pokeapi.co/api/v2/pokemon/?limit=151";
 
   useEffect(() => {
     setLoading(true);
-    const controller = new AbortController();
-    axios
-      .get(currentPageURL, {
-        signal: controller.signal,
-      })
-      .then((res) => {
-        setPokemons(res.data.results.map((p) => p));
-      })
-      .finally(() => {
-        controller.abort();
+    async function fetchData(id) {
+      try {
+        await fetch(id)
+          .then((e) => e.json())
+          .then((d) => d.results.map((p) => p))
+          .then((r) => setPokemons(r));
+      } catch (e) {
+        console.log(e);
+      } finally {
         setLoading(false);
-      });
-  }, [currentPageURL]);
+      }
+    }
+    fetchData(URL);
+  }, []);
 
   if (loading) return <div>Loading</div>;
   return (
     <>
-      {loading ? <div>Loading</div> : <MemoTest pokemons={pokemons} />}
-
-      <Container>
+      <Container item={"memo"}>
+        {loading ? <div>Loading</div> : <LayoutMemo pokemons={pokemons} />}
+      </Container>
+      <Container item={"pokemons"}>
         {loading ? (
           <div>loading</div>
         ) : (

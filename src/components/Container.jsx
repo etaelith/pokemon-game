@@ -1,6 +1,6 @@
 import "../styles/container.css";
-const Container = ({ children }) => {
-  return <div className="container">{children}</div>;
+const Container = ({ children, item }) => {
+  return <div className={`container ${item}`}>{children}</div>;
 };
 
 export default Container;

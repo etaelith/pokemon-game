@@ -5,19 +5,3 @@ ul {
     max-width: 800px;
     margin: auto
 }
-/*
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    max-width:800px;
-    height: 100vh;
-    grid-template-columns: repeat(5, 1fr);
-    justify-content: center;
-}
-
-li img {
-    width: 5rem;
-    height: auto;
-} */

@@ -1,24 +1,26 @@
+import { useEffect, useState } from "react";
 import defineIcon from "../utils/getIcon";
+import sumZeros from "../utils/getZeros";
 import "../styles/pokemonCardType.css";
 import "../styles/pokemonCard.css";
 
-import { useEffect, useState } from "react";
-import axios from "axios";
 const Pokemon = ({ url }) => {
   const [pokemonData, setPokemonData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  function sumZeros(num, size) {
-    var s = num + "";
-    while (s.length < size) s = "0" + s;
-    return s;
-  }
   useEffect(() => {
-    setLoading(true);
-    axios.get(url).then((res) => {
-      setPokemonData(res.data);
-      setLoading(false);
-    });
+    async function fetchData(id) {
+      try {
+        await fetch(id)
+          .then((e) => e.json())
+          .then((r) => setPokemonData(r));
+      } catch (e) {
+        console.log(e);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData(url);
   }, []);
   return (
     <>
