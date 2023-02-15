@@ -5,6 +5,7 @@ import Container from "./components/Container";
 import LayoutMemo from "./components/LayoutMemo";
 import { PokemonsContext } from "./context/PokemonsProvider";
 import MemoProvider from "./context/MemoProvider";
+import LocalStorageProvider from "./context/LocalStorageProvider";
 
 const App = () => {
   const { pokemons, loading } = useContext(PokemonsContext);
@@ -15,7 +16,9 @@ const App = () => {
     <>
       <Container item={"memo"}>
         <MemoProvider>
-          <LayoutMemo />
+          <LocalStorageProvider>
+            <LayoutMemo />
+          </LocalStorageProvider>
         </MemoProvider>
       </Container>
       <Container item={"pokemons"}>

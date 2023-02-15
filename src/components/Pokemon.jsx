@@ -1,34 +1,16 @@
-import { useEffect, useState } from "react";
 import { sumZeros } from "../utils/getFunctions";
 
 import defineIcon from "../utils/getIcon";
 
 import "../styles/pokemonCardType.css";
 import "../styles/pokemonCard.css";
+import { useFetch } from "../hooks/useFetch";
 
 const Pokemon = ({ url }) => {
-  const [pokemonData, setPokemonData] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchData(id) {
-      try {
-        await fetch(id)
-          .then((e) => e.json())
-          .then((r) => setPokemonData(r));
-      } catch (e) {
-        console.log(e);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchData(url);
-  }, []);
+  const pokemonData = useFetch(url);
   return (
     <>
-      {loading ? (
-        <div>loading</div>
-      ) : (
+      {pokemonData && (
         <div className={`card ${pokemonData.types[0].type.name}`}>
           <div className={`fill-bg ${pokemonData.types[0].type.name}`}></div>
           <div className="container-detail">
