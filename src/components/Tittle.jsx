@@ -1,7 +1,10 @@
-import "../styles/tittle.css";
-import { getLocal } from "../utils/getLocalStorage";
+import { useContext } from "react";
+import { MemoContext } from "../context/MemoProvider";
+import { getLocal } from "../utils/getFunctions";
 import Timer from "./Timer";
-const Tittle = ({ time, handleStart, lvl }) => {
+import "../styles/tittle.css";
+const Tittle = () => {
+  const { time, handleStart, lvl } = useContext(MemoContext);
   return (
     <div className="tittle">
       <div className="nes-text is-primary h1-tittle">Memo-test Pokemon</div>

@@ -4,12 +4,12 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 import "nes.css/css/nes.min.css";
-
+import PokemonsProvider from "./context/PokemonsProvider";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <BrowserRouter>
-          <App />
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter>
+    <PokemonsProvider>
+      <App />
+    </PokemonsProvider>
+  </BrowserRouter>
 );

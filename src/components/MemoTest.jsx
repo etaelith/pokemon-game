@@ -1,13 +1,20 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { PokemonsContext } from "../context/PokemonsProvider";
+import { MemoContext } from "../context/MemoProvider";
 
+import {
+  getLocal,
+  setLocal,
+  extractData,
+  sumZeros,
+} from "../utils/getFunctions";
 import CardMemoTest from "./CardMemoTest";
-import extractData from "../utils/getMemo";
-import sumZeros from "../utils/getZeros";
-import { getLocal, setLocal } from "../utils/getLocalStorage";
 
 import "../styles/memotest.css";
 
-const MemoTest = ({ pokemons, handleReset }) => {
+const MemoTest = () => {
+  const { pokemons } = useContext(PokemonsContext);
+  const { handleReset } = useContext(MemoContext);
   const [completed, setCompleted] = useState([]);
   const [selected, setSelected] = useState([]);
   const [memoImages, setMemoImages] = useState([]);

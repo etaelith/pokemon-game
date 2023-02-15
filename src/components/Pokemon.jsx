@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { sumZeros } from "../utils/getFunctions";
+
 import defineIcon from "../utils/getIcon";
-import sumZeros from "../utils/getZeros";
+
 import "../styles/pokemonCardType.css";
 import "../styles/pokemonCard.css";
 

@@ -14,3 +14,17 @@ export function getLocal(key) {
 export function setLocal(key, value) {
   localStorage.setItem(key, value);
 }
+
+export function extractData(a, b) {
+  let remaining = a.slice(b, a.length);
+  let result = remaining.slice(0, 10);
+  return result.map((element, index) => {
+    return { data: element, index: b + index + 1 };
+  });
+}
+
+export function sumZeros(num, size) {
+  var s = num + "";
+  while (s.length < size) s = "0" + s;
+  return s;
+}
