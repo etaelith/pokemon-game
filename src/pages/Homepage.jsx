@@ -7,7 +7,7 @@ import { PokemonsContext } from "../context/PokemonsProvider";
 import LocalStorageProvider from "../context/LocalStorageProvider";
 import MemoProvider from "../context/MemoProvider";
 import PokemonFocus from "../components/PokemonFocus";
-import PokemonFocusTest from "../components/PokemonFocusTest";
+import PokemonFocusTest from "../components/PokemonFocus";
 
 const Homepage = () => {
   const { pokemons, loading } = useContext(PokemonsContext);
@@ -21,7 +21,7 @@ const Homepage = () => {
           <Container item={"memo"}>
             <LayoutMemo />
           </Container>
-          <PokemonFocusTest />
+          <PokemonFocus />
           <Container item={"pokemons"}>
             {pokemons.map((p) => (
               <Pokemon key={p.name} url={p.url} />
