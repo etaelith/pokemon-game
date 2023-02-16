@@ -3,6 +3,8 @@ export const PokemonsContext = createContext();
 const PokemonsProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [pokemons, setPokemons] = useState();
+  const [pokeDetail, setPokeDetail] = useState([]);
+  const [detailIsLoading, setDetailIsLoading] = useState(true);
   const URL = "https://pokeapi.co/api/v2/pokemon/?limit=151";
 
   useEffect(() => {
@@ -22,8 +24,6 @@ const PokemonsProvider = ({ children }) => {
     fetchData(URL);
   }, []);
 
-  const [pokeDetail, setPokeDetail] = useState([]);
-  const [detailIsLoading, setDetailIsLoading] = useState(true);
   return (
     <PokemonsContext.Provider
       value={{

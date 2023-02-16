@@ -4,17 +4,18 @@ import { sumZeros } from "../utils/getFunctions";
 import defineIcon from "../utils/getIcon";
 import "../styles/pokemonFocus.css";
 const PokemonFocus = () => {
-  const { pokeDetail, setPokeDetail, detailIsLoading, setDetailIsLoading } =
+  const { pokeDetail, detailIsLoading, setDetailIsLoading } =
     useContext(PokemonsContext);
 
   const handleCard = (e) => {
     e.preventDefault();
-    setDetailIsLoading(true);
+    setDetailIsLoading(!detailIsLoading);
+    
   };
   return (
     <>
       {detailIsLoading ? (
-        <div>Loading</div>
+        ""
       ) : (
         <div
           className={`pokeDetail-container ${pokeDetail.types[0].type.name}`}
