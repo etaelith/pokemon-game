@@ -21,8 +21,20 @@ const PokemonsProvider = ({ children }) => {
     }
     fetchData(URL);
   }, []);
+
+  const [pokeDetail, setPokeDetail] = useState([]);
+  const [detailIsLoading, setDetailIsLoading] = useState(true);
   return (
-    <PokemonsContext.Provider value={{ pokemons, loading }}>
+    <PokemonsContext.Provider
+      value={{
+        pokemons,
+        loading,
+        pokeDetail,
+        setPokeDetail,
+        detailIsLoading,
+        setDetailIsLoading,
+      }}
+    >
       {children}
     </PokemonsContext.Provider>
   );

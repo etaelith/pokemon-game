@@ -1,17 +1,32 @@
 import { sumZeros } from "../utils/getFunctions";
-
+import { useContext } from "react";
 import defineIcon from "../utils/getIcon";
 
+import { useFetch } from "../hooks/useFetch";
+import { Link, useLocation } from "react-router-dom";
 import "../styles/pokemonCardType.css";
 import "../styles/pokemonCard.css";
-import { useFetch } from "../hooks/useFetch";
+import PokemonFocus from "./PokemonFocus";
+import { PokemonsContext } from "../context/PokemonsProvider";
 
 const Pokemon = ({ url }) => {
+  const { setPokeDetail, setDetailIsLoading } = useContext(PokemonsContext);
   const pokemonData = useFetch(url);
+  const location = useLocation();
+  const pathId = location.pathname.split("/")[1];
+  const handleCard = (e) => {
+    e.preventDefault();
+    setPokeDetail(pokemonData);
+    setDetailIsLoading(false);
+  };
   return (
     <>
+      {pathId && <PokemonFocus value={pathId} />}
       {pokemonData && (
-        <div className={`card ${pokemonData.types[0].type.name}`}>
+        <div
+          className={`card ${pokemonData.types[0].type.name}`}
+          onClick={handleCard}
+        >
           <div className={`fill-bg ${pokemonData.types[0].type.name}`}></div>
           <div className="container-detail">
             <div className="top-container">

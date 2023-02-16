@@ -10,6 +10,7 @@ import { PokemonsContext } from "./PokemonsProvider";
 export const LocalStorageContext = createContext();
 const LocalStorageProvider = ({ children }) => {
   const { pokemons } = useContext(PokemonsContext);
+  const { lvl } = useContext(MemoContext);
   const { handleReset } = useContext(MemoContext);
   const [completed, setCompleted] = useState([]);
   const [selected, setSelected] = useState([]);
@@ -46,7 +47,7 @@ const LocalStorageProvider = ({ children }) => {
         setPokemonImages(tank);
       }
     }
-  }, []);
+  }, [lvl]);
 
   useEffect(() => {
     if (pokemonImages) {
@@ -87,6 +88,7 @@ const LocalStorageProvider = ({ children }) => {
         setLocal("players", JSON.stringify(players));
 
         handleReset();
+        setCompleted([])
       }
     }
   }, [completed]);
