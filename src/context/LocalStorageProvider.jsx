@@ -68,8 +68,10 @@ const LocalStorageProvider = ({ children }) => {
   //MemoTest
   useEffect(() => {
     if (selected.length === 2) {
-      if (selected[0].id.split("|")[1] === selected[1].id.split("|")[1]) {
-        setCompleted((completed) => completed.concat(selected));
+      if (selected[0].id !== selected[1].id) {
+        if (selected[0].id.split("|")[1] === selected[1].id.split("|")[1]) {
+          setCompleted((completed) => completed.concat(selected));
+        }
       }
       setTimeout(() => setSelected([]), 1000);
     }
@@ -88,7 +90,7 @@ const LocalStorageProvider = ({ children }) => {
         setLocal("players", JSON.stringify(players));
 
         handleReset();
-        setCompleted([])
+        setCompleted([]);
       }
     }
   }, [completed]);
