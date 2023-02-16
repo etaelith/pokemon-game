@@ -28,3 +28,6 @@ export function sumZeros(num, size) {
   while (s.length < size) s = "0" + s;
   return s;
 }
+export function feetToMeters(num) {
+  return (num / 3.2808).toFixed(2);
+}
