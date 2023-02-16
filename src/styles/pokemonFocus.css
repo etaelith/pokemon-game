@@ -283,6 +283,7 @@
 /*End of Card Colors*/
 
 .pokeDetail-card {
+    z-index: 600;
     background: #fff;
     padding: 0px;
     border-radius: 25px;
@@ -417,7 +418,7 @@
     margin: 10px 0px;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 

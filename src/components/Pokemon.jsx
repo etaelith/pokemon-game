@@ -3,17 +3,13 @@ import { useContext } from "react";
 import defineIcon from "../utils/getIcon";
 
 import { useFetch } from "../hooks/useFetch";
-import { Link, useLocation } from "react-router-dom";
-import "../styles/pokemonCardType.css";
-import "../styles/pokemonCard.css";
-import PokemonFocus from "./PokemonFocus";
 import { PokemonsContext } from "../context/PokemonsProvider";
+import "../styles/pokemonCard.css";
+import "../styles/pokemonCardType.css";
 
 const Pokemon = ({ url }) => {
   const { setPokeDetail, setDetailIsLoading } = useContext(PokemonsContext);
   const pokemonData = useFetch(url);
-  const location = useLocation();
-  const pathId = location.pathname.split("/")[1];
   const handleCard = (e) => {
     e.preventDefault();
     setPokeDetail(pokemonData);
@@ -21,7 +17,6 @@ const Pokemon = ({ url }) => {
   };
   return (
     <>
-      {pathId && <PokemonFocus value={pathId} />}
       {pokemonData && (
         <div
           className={`card ${pokemonData.types[0].type.name}`}

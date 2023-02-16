@@ -7,6 +7,7 @@ import { PokemonsContext } from "../context/PokemonsProvider";
 import LocalStorageProvider from "../context/LocalStorageProvider";
 import MemoProvider from "../context/MemoProvider";
 import PokemonFocus from "../components/PokemonFocus";
+import PokemonFocusTest from "../components/PokemonFocus";
 
 const Homepage = () => {
   const { pokemons, loading } = useContext(PokemonsContext);
@@ -15,19 +16,19 @@ const Homepage = () => {
 
   return (
     <>
-      <Container item={"memo"}>
-        <MemoProvider>
-          <LocalStorageProvider>
+      <MemoProvider>
+        <LocalStorageProvider>
+          <Container item={"memo"}>
             <LayoutMemo />
-          </LocalStorageProvider>
-        </MemoProvider>
-      </Container>
-      <PokemonFocus />
-      <Container item={"pokemons"}>
-        {pokemons.map((p) => (
-          <Pokemon key={p.name} url={p.url} />
-        ))}
-      </Container>
+          </Container>
+          <PokemonFocus />
+          <Container item={"pokemons"}>
+            {pokemons.map((p) => (
+              <Pokemon key={p.name} url={p.url} />
+            ))}
+          </Container>
+        </LocalStorageProvider>
+      </MemoProvider>
     </>
   );
 };
