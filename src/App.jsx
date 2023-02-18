@@ -1,11 +1,14 @@
 import "./App.css";
+import LocalStorageProvider from "./context/LocalStorageProvider";
 
 import Homepage from "./pages/Homepage";
 
 const App = () => {
   return (
     <>
-    <Homepage />
+      <LocalStorageProvider>
+        <Homepage />
+      </LocalStorageProvider>
     </>
   );
 };

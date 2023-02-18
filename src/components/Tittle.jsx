@@ -3,11 +3,12 @@ import { MemoContext } from "../context/MemoProvider";
 import { getLocal } from "../utils/getFunctions";
 import Timer from "./Timer";
 import "../styles/tittle.css";
+import { LocalStorageContext } from "../context/LocalStorageProvider";
 const Tittle = () => {
-  const { time, handleStart, lvl } = useContext(MemoContext);
+  const { time, handleStart } = useContext(MemoContext);
+  const { lvl } = useContext(LocalStorageContext);
   return (
     <>
-
       <div className="tittle">
         <div className="nes-text is-primary h1-tittle">Memo-test Pokemon</div>
         <div className="nes-container is-dark with-title">
