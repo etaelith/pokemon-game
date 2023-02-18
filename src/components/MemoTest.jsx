@@ -1,13 +1,13 @@
 import { useContext } from "react";
-import { LocalStorageContext } from "../context/LocalStorageProvider";
 
 import CardMemoTest from "./CardMemoTest";
 
 import "../styles/memotest.css";
+import { MemoContext } from "../context/MemoProvider";
 
 const MemoTest = () => {
   const { selected, setSelected, completed, setCompleted, memoImages } =
-    useContext(LocalStorageContext);
+    useContext(MemoContext);
 
   return (
     <>

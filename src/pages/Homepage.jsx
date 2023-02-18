@@ -1,13 +1,12 @@
 import { useContext } from "react";
-import "../App.css";
-import Pokemon from "../components/Pokemon";
+import MemoProvider from "../context/MemoProvider";
+import { PokemonsContext } from "../context/PokemonsProvider";
 import Container from "../components/Container";
 import LayoutMemo from "../components/LayoutMemo";
-import { PokemonsContext } from "../context/PokemonsProvider";
-import LocalStorageProvider from "../context/LocalStorageProvider";
-import MemoProvider from "../context/MemoProvider";
 import PokemonFocus from "../components/PokemonFocus";
-import PokemonFocusTest from "../components/PokemonFocus";
+import Pokemon from "../components/Pokemon";
+
+import "../App.css";
 
 const Homepage = () => {
   const { pokemons, loading } = useContext(PokemonsContext);
@@ -16,19 +15,17 @@ const Homepage = () => {
 
   return (
     <>
-      <MemoProvider>
-        <LocalStorageProvider>
-          <Container item={"memo"}>
-            <LayoutMemo />
-          </Container>
-          <PokemonFocus />
-          <Container item={"pokemons"}>
-            {pokemons.map((p) => (
-              <Pokemon key={p.name} url={p.url} />
-            ))}
-          </Container>
-        </LocalStorageProvider>
-      </MemoProvider>
+      <Container item={"memo"}>
+        <MemoProvider>
+          <LayoutMemo />
+        </MemoProvider>
+      </Container>
+      <PokemonFocus />
+      <Container item={"pokemons"}>
+        {pokemons.map((p) => (
+          <Pokemon key={p.name} url={p.url} />
+        ))}
+      </Container>
     </>
   );
 };

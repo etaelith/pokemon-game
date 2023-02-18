@@ -4,15 +4,15 @@
 
 }
 
-.card.grass {
-  background-color: #a7db8d;
+.card.grass:hover .fill-bg.grass {
+  border-color: #78c850;
 }
 
 .card.grass::before {
   background: linear-gradient(to right, #aaffa9, #11ffbd, #45daaf, #aaffa9);
 }
 
-.type-tab.grass {
+.card .type-tab.grass , .pokeDetail-type-tab.grass{
   background-color: #78c850;
 }
 
@@ -25,7 +25,7 @@
   border-color: #a040a0;
 }
 
-.card .type-tab.poison {
+.card .type-tab.poison , .pokeDetail-type-tab.poison{
   background-color: #a040a0;
 }
 
@@ -42,7 +42,7 @@
   border-color: #f08030;
 }
 
-.card .type-tab.fire {
+.card .type-tab.fire, .pokeDetail-type-tab.fire {
   background-color: #f08030;
 }
 
@@ -65,7 +65,7 @@
   border-color: #6890f0;
 }
 
-.card .type-tab.water {
+.card .type-tab.water, .pokeDetail-type-tab.water {
   background-color: #6890f0;
 }
 
@@ -82,7 +82,7 @@
   border-color: #f8d030;
 }
 
-.card .type-tab.electric {
+.card .type-tab.electric , .pokeDetail-type-tab.electric{
   background-color: #f8d030;
 }
 
@@ -99,7 +99,7 @@
   border-color: #a8b820;
 }
 
-.card .type-tab.bug {
+.card .type-tab.bug , .pokeDetail-type-tab.bug{
   background-color: #a8b820;
 }
 
@@ -116,7 +116,7 @@
   border-color: #7038f8;
 }
 
-.card .type-tab.dragon {
+.card .type-tab.dragon, .pokeDetail-type-tab.dragon {
   background-color: #7038f8;
 }
 
@@ -135,7 +135,7 @@
   border-color: #ee99ac;
 }
 
-.card .type-tab.fairy {
+.card .type-tab.fairy, .pokeDetail-type-tab.fairy {
   background-color: #ee99ac;
 }
 
@@ -155,7 +155,7 @@
   border-color: #705898;
 }
 
-.card .type-tab.ghost {
+.card .type-tab.ghost , .pokeDetail-type-tab.ghost{
   background-color: #705898;
 }
 
@@ -173,7 +173,7 @@
   border-color: #e0c068;
 }
 
-.card .type-tab.ground {
+.card .type-tab.ground , .pokeDetail-type-tab.ground{
   background-color: #e0c068;
 }
 
@@ -208,7 +208,7 @@
   border-color: #a8a878;
 }
 
-.card .type-tab.normal {
+.card .type-tab.normal, .pokeDetail-type-tab.normal {
   background-color: #a8a878;
 }
 
@@ -227,7 +227,7 @@
   border-color: #f85888;
 }
 
-.card .type-tab.psychic {
+.card .type-tab.psychic, .pokeDetail-type-tab.psychic {
   background-color: #f85888;
 }
 
@@ -245,7 +245,7 @@
   border-color: #b8a038;
 }
 
-.card .type-tab.rock {
+.card .type-tab.rock , .pokeDetail-type-tab.rock{
   background-color: #b8a038;
 }
 
@@ -263,7 +263,7 @@
   border-color: #b8b8d0;
 }
 
-.card .type-tab.steel {
+.card .type-tab.steel , .pokeDetail-type-tab.steel{
   background-color: #b8b8d0;
 }
 
@@ -281,7 +281,7 @@
   border-color: #c03028;
 }
 
-.card .type-tab.fighting {
+.card .type-tab.fighting, .pokeDetail-type-tab.fighting {
   background-color: #c03028;
 }
 
@@ -299,7 +299,7 @@
   border-color: #a890f0;
 }
 
-.card .type-tab.flying {
+.card .type-tab.flying , .pokeDetail-type-tab.flying{
   background-color: #a890f0;
 }
 
@@ -321,7 +321,7 @@
   border-color: #3a2d26;
 }
 
-.card .type-tab.dark {
+.card .type-tab.dark , .pokeDetail-type-tab.dark{
   background-color: #3a2d26;
 }
 

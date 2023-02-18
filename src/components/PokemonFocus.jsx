@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { PokemonsContext } from "../context/PokemonsProvider";
 import { feetToMeters, sumZeros } from "../utils/getFunctions";
-import defineIcon from "../utils/getIcon";
-import PokeIcon from "../assets/pokeball.svg";
-import "../styles/pokemonFocus.css";
 import usePokeInfo from "../hooks/usePokeInfo";
+import defineIcon from "../utils/getIcon";
+import "../styles/pokemonFocus.css";
+import PokeIcon from "../assets/pokeball.svg";
 const PokemonFocusTest = () => {
   const { pokeDetail, detailIsLoading, setDetailIsLoading } =
     useContext(PokemonsContext);
@@ -127,7 +127,9 @@ const PokemonFocusTest = () => {
                         </div>
                         <div className="subtitle-container">
                           <p className="subtitle">Height</p>
-                          <p className="description">{feetToMeters(pokeDetail.height)}m</p>
+                          <p className="description">
+                            {feetToMeters(pokeDetail.height)}m
+                          </p>
                         </div>
                         <div className="subtitle-container">
                           <p className="subtitle">Weight</p>
