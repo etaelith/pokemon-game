@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { MemoContext } from "../context/MemoProvider";
+import { useContext } from "react";
+import { MemoContext } from "../../context/MemoProvider";
 
 import MemoTest from "./MemoTest";
 import Tittle from "./Tittle";

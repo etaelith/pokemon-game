@@ -325,7 +325,6 @@
     color: #ffffff;
 }
 
-.pokeDetail-title-container h3 {}
 
 .pokeDetail-title-container .titleName {
     font-size: 1.8rem;
@@ -378,7 +377,9 @@
     z-index: 10;
     width: 220px;
 }
-
+.pokeDetail-img.false{
+    filter: brightness(0);
+}
 .pokeball-icon-white {
     position: absolute;
     top: 0;
@@ -412,6 +413,12 @@
     padding: 20px 30px;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
+}
+
+.pokeDetail-info-container.blocked-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .pokeDetail-tabsInfo-container {
@@ -794,8 +801,6 @@
         transform: rotate(360deg);
     }
 }
-
-.about-species {}
 
 .about-subtitle {
     color: #343a40;

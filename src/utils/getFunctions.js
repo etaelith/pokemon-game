@@ -31,3 +31,31 @@ export function sumZeros(num, size) {
 export function feetToMeters(num) {
   return (num / 3.2808).toFixed(2);
 }
+
+export function getCheck(url) {
+  const parts = url.split("/");
+  const number = parts[parts.length - 2];
+  const arrayFromLocalStorage = getLocal("players");
+  if (arrayFromLocalStorage.includes(parseInt(number))) {
+    return "";
+  } else {
+    return "uncatched";
+  }
+}
+
+export function formatTime(time) {
+  const minutes = ("0" + Math.floor((time / 100 / 60) % 60)).slice(-2);
+  const seconds = ("0" + Math.floor((time / 100) % 60)).slice(-2);
+  const milliseconds = ("0" + Math.floor((time % 100) / 10)).slice(-2);
+  return `${minutes}:${seconds}:${milliseconds}`;
+}
+
+export function levelDefined() {
+  const res = getLocal("players");
+  const data = res.length;
+  if (data < 100) {
+    return Number(String(data)[0]);
+  } else {
+    return Number(String(data)[0] + String(data)[1]);
+  }
+}

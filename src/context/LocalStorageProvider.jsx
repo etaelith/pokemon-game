@@ -4,16 +4,15 @@ import {
   sumZeros,
   getLocal,
   setLocal,
+  levelDefined,
 } from "../utils/getFunctions";
 
 import { PokemonsContext } from "./PokemonsProvider";
 export const LocalStorageContext = createContext();
 const LocalStorageProvider = ({ children }) => {
   const { pokemons, loading } = useContext(PokemonsContext);
-  const [lvl, setLvl] = useState(
-    parseInt(String(getLocal("players").length)[0]) || 0
-  );
-
+  const [lvl, setLvl] = useState(levelDefined());
+  const unblocked = getLocal("players");
   const [pokemonImages, setPokemonImages] = useState(null);
   const IMAGE_URL = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/";
   //localstorage
@@ -56,6 +55,7 @@ const LocalStorageProvider = ({ children }) => {
         pokemonImages,
         lvl,
         setLvl,
+        unblocked,
       }}
     >
       {children}

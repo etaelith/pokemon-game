@@ -2,8 +2,8 @@ import { useContext } from "react";
 
 import CardMemoTest from "./CardMemoTest";
 
-import "../styles/memotest.css";
-import { MemoContext } from "../context/MemoProvider";
+import { MemoContext } from "../../context/MemoProvider";
+import "../../styles/memotest.css";
 
 const MemoTest = () => {
   const { selected, setSelected, completed, setCompleted, memoImages } =
