@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { MemoContext } from "../context/MemoProvider";
-import { getLocal } from "../utils/getFunctions";
+import { MemoContext } from "../../context/MemoProvider";
+import { getLocal } from "../../utils/getFunctions";
 import Timer from "./Timer";
-import "../styles/tittle.css";
-import { LocalStorageContext } from "../context/LocalStorageProvider";
+import "../../styles/tittle.css";
+import { LocalStorageContext } from "../../context/LocalStorageProvider";
 const Tittle = () => {
   const { time, handleStart } = useContext(MemoContext);
   const { lvl } = useContext(LocalStorageContext);

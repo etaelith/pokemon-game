@@ -1,11 +1,11 @@
-import { sumZeros } from "../utils/getFunctions";
+import { getCheck, levelDefined, sumZeros } from "../../utils/getFunctions";
 import { useContext } from "react";
-import defineIcon from "../utils/getIcon";
+import defineIcon from "../../utils/getIcon";
 
-import { useFetch } from "../hooks/useFetch";
-import { PokemonsContext } from "../context/PokemonsProvider";
-import "../styles/pokemonCard.css";
-import "../styles/pokemonCardType.css";
+import { useFetch } from "../../hooks/useFetch";
+import { PokemonsContext } from "../../context/PokemonsProvider";
+import "../../styles/pokemonCard.css";
+import "../../styles/pokemonCardType.css";
 
 const Pokemon = ({ url }) => {
   const { setPokeDetail, setDetailIsLoading } = useContext(PokemonsContext);
@@ -14,7 +14,9 @@ const Pokemon = ({ url }) => {
     e.preventDefault();
     setPokeDetail(pokemonData);
     setDetailIsLoading(false);
+    levelDefined()
   };
+
   return (
     <>
       {pokemonData && (
@@ -37,7 +39,7 @@ const Pokemon = ({ url }) => {
             </div>
             <div className="image-container">
               <img
-                className="pokemon-img"
+                className={`pokemon-img ${getCheck(url)}`}
                 src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${sumZeros(
                   pokemonData.id,
                   3
