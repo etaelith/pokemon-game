@@ -53,9 +53,21 @@ export function formatTime(time) {
 export function levelDefined() {
   const res = getLocal("players");
   const data = res.length;
-  if (data < 100) {
-    return Number(String(data)[0]);
-  } else {
-    return Number(String(data)[0] + String(data)[1]);
+  if (!data) {
+    return 0;
   }
+  if (data < 100) {
+    return Number(String(data)[0]) + 1;
+  } else {
+    return Number(String(data)[0] + String(data)[1]) + 1;
+  }
+}
+
+export function getImages(n) {
+  let firstNum = 10 * (n - 1) + 1;
+  let result = new Set();
+  for (let i = 0; i < 10; i++) {
+    result.add(firstNum + i);
+  }
+  return Array.from(result).sort((a, b) => a - b);
 }

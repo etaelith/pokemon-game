@@ -1,12 +1,13 @@
 import { useContext } from "react";
-import { MemoContext } from "../../context/MemoProvider";
+import { TimerContext } from "../../reducer/TimerProvider";
 import { getLocal } from "../../utils/getFunctions";
 import Timer from "./Timer";
 import "../../styles/tittle.css";
-import { LocalStorageContext } from "../../context/LocalStorageProvider";
+import { LocalContext } from "../../context/LocalProvider";
 const Tittle = () => {
-  const { time, handleStart } = useContext(MemoContext);
-  const { lvl } = useContext(LocalStorageContext);
+  const { handleStart, time } = useContext(TimerContext);
+  const { state } = useContext(LocalContext);
+  const { lvl } = state;
   return (
     <>
       <div className="tittle">
@@ -24,7 +25,7 @@ const Tittle = () => {
               onClick={handleStart}
               className="nes-btn is-primary button-play"
             >
-              {lvl === 0 ? "Play" : `Go to lvl ${lvl + 1}`}
+              {lvl === 0 ? "Play" : `Go to lvl ${lvl}`}
             </button>
 
             <div className="nes-container is-rounded align-count">

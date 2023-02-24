@@ -8,7 +8,6 @@ import "../../styles/memotest.css";
 const MemoTest = () => {
   const { selected, setSelected, completed, setCompleted, memoImages } =
     useContext(MemoContext);
-
   return (
     <>
       {memoImages && (

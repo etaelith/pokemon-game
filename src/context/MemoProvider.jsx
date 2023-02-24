@@ -1,34 +1,20 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { LocalContext } from "./LocalProvider";
 import { getLocal, setLocal } from "../utils/getFunctions";
-import { LocalStorageContext } from "./LocalStorageProvider";
+import {  TimerContext } from "../reducer/TimerProvider";
 export const MemoContext = createContext();
 const MemoProvider = ({ children }) => {
-  const { setLvl, pokemonImages } = useContext(LocalStorageContext);
+  const { state, lvlUp } = useContext(LocalContext);
+  const { handleReset } = useContext(TimerContext);
+
   const [completed, setCompleted] = useState([]);
   const [selected, setSelected] = useState([]);
   const [memoImages, setMemoImages] = useState([]);
 
-  const [isActive, setIsActive] = useState(false);
-  const [isPaused, setIsPaused] = useState(true);
-  const [time, setTime] = useState(0);
   useEffect(() => {
-    let interval = null;
-    if (isActive && isPaused === false) {
-      interval = setInterval(() => {
-        setTime((time) => time + 10);
-      }, 10);
-    } else {
-      clearInterval(interval);
-    }
-    return () => {
-      clearInterval(interval);
-    };
-  }, [isActive, isPaused]);
-
-  useEffect(() => {
-    if (pokemonImages) {
+    if (state.pokemonImages) {
       const sortedMemoImages = [];
-      pokemonImages.forEach((image, index) => {
+      state.pokemonImages.forEach((image, index) => {
         sortedMemoImages.push({
           id: `a|${image}`,
           originalIndex: index,
@@ -40,7 +26,7 @@ const MemoProvider = ({ children }) => {
       });
       setMemoImages(sortedMemoImages.sort(() => Math.random() - 0.5));
     }
-  }, [pokemonImages]);
+  }, [state.pokemonImages]);
   //MemoTest
   useEffect(() => {
     if (selected.length === 2) {
@@ -53,8 +39,8 @@ const MemoProvider = ({ children }) => {
     }
   }, [selected]);
   useEffect(() => {
-    if (pokemonImages !== null) {
-      if (completed.length === memoImages.length) {
+    if (memoImages !== null) {
+      if (completed.length === 20) {
         const players = getLocal("players");
         const lastNumber = players[players.length - 1] || 0;
         const newNumbers = Array.from(
@@ -65,28 +51,10 @@ const MemoProvider = ({ children }) => {
         setLocal("players", JSON.stringify(players));
         setCompleted([]);
         handleReset();
+        lvlUp();
       }
     }
   }, [completed]);
-  const handleStart = () => {
-    setIsActive(true);
-    setIsPaused(false);
-  };
-
-  const handleReset = () => {
-    setIsPaused(true);
-    setIsActive(false);
-    setTimeout(() => {
-      setTime(0);
-      const data = getLocal("record");
-      if (time < data) {
-        setLocal("record", time);
-      }
-      const lengthLevel = getLocal("players").length;
-      const level = parseInt(String(lengthLevel)[0]);
-      setLvl(level);
-    }, 0);
-  };
 
   return (
     <MemoContext.Provider
@@ -96,11 +64,6 @@ const MemoProvider = ({ children }) => {
         completed,
         setCompleted,
         memoImages,
-        isActive,
-        isPaused,
-        time,
-        handleReset,
-        handleStart,
       }}
     >
       {children}

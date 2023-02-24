@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import { MemoContext } from "../../context/MemoProvider";
+import { TimerContext } from "../../reducer/TimerProvider";
 
 import MemoTest from "./MemoTest";
 import Tittle from "./Tittle";
 
 const LayoutMemo = () => {
-  const { isActive } = useContext(MemoContext);
+  const { isActive } = useContext(TimerContext);
 
   return (
     <>
