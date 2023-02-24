@@ -5,7 +5,13 @@ const PokemonsProvider = ({ children }) => {
   const [pokemons, setPokemons] = useState();
   const [pokeDetail, setPokeDetail] = useState([]);
   const [detailIsLoading, setDetailIsLoading] = useState(true);
-  const URL = "https://pokeapi.co/api/v2/pokemon/?limit=151";
+  const [currentURL, setCurrentURL] = useState(
+    "https://pokeapi.co/api/v2/pokemon"
+  );
+  const [prevURL, setPrevURL] = useState(null);
+  const [nextURL, setNextURL] = useState(null);
+  const [count, setCount] = useState(0);
+
 
   useEffect(() => {
     setLoading(true);
@@ -13,20 +19,32 @@ const PokemonsProvider = ({ children }) => {
       try {
         await fetch(id)
           .then((e) => e.json())
-          .then((d) => d.results.map((p) => p))
-          .then((r) => setPokemons(r));
+          .then((res) => {
+            setPrevURL(res.previous);
+            setNextURL(res.next);
+            setPokemons(res.results.map((p) => p));
+          });
       } catch (e) {
         console.log(e);
       } finally {
         setLoading(false);
       }
     }
-    fetchData(URL);
-  }, []);
-
+    fetchData(currentURL);
+  }, [currentURL]);
+  const goNext = () => {
+    setCurrentURL(nextURL);
+    setCount(count + 1);
+  };
+  const goPrev = () => {
+    setCurrentURL(prevURL);
+    setCount(count - 1);
+  };
   return (
     <PokemonsContext.Provider
       value={{
+        goNext,
+        goPrev,
         pokemons,
         loading,
         pokeDetail,

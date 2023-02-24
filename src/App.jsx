@@ -1,14 +1,14 @@
 import "./App.css";
-import LocalStorageProvider from "./context/LocalStorageProvider";
+import LocalProvider from "./context/LocalProvider";
 
 import Homepage from "./pages/Homepage";
 
 const App = () => {
   return (
     <>
-      <LocalStorageProvider>
+      <LocalProvider>
         <Homepage />
-      </LocalStorageProvider>
+      </LocalProvider>
     </>
   );
 };

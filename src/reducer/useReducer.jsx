@@ -1,17 +1,16 @@
-import { getLocal } from "../utils/getFunctions";
+import { getLocal, levelDefined, setLocal } from "../utils/getFunctions";
 
 export const initialState = {
   isActive: false,
   isPaused: true,
   time: 0,
-  lvl: parseInt(String(getLocal("players").length)[0]) || 0,
+  lvl: levelDefined(),
 };
 export const reducer = (state, action) => {
   switch (action.type) {
     case "START":
       return { ...state, isActive: true, isPaused: false };
-    case "PAUSE_RESUME":
-      return { ...state, isPaused: !state.isPaused };
+
     case "RESET":
       const data = getLocal("record");
       if (state.time < data) {

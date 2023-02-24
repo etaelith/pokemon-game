@@ -1,10 +1,9 @@
 import { createContext, useEffect, useReducer } from "react";
 import { initialState, reducer } from "./useReducer";
 
-export const MemoReducerContext = createContext();
-const MemoProviderReducer = ({ children }) => {
+export const TimerContext = createContext();
+const TimerProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-
   useEffect(() => {
     let interval = null;
     if (state.isActive && !state.isPaused) {
@@ -23,27 +22,24 @@ const MemoProviderReducer = ({ children }) => {
     dispatch({ type: "START" });
   };
 
-  const handlePauseResume = () => {
-    dispatch({ type: "PAUSE_RESUME" });
-  };
-
   const handleReset = () => {
     dispatch({ type: "RESET" });
   };
 
   return (
-    <MemoReducerContext.Provider
+    <TimerContext.Provider
       value={{
         ...state,
         handleStart,
-        handlePauseResume,
+        isActive: state.isActive,
+        time: state.time,
         handleReset,
         dispatch,
       }}
     >
       {children}
-    </MemoReducerContext.Provider>
+    </TimerContext.Provider>
   );
 };
 
-export default MemoProviderReducer;
+export default TimerProvider;

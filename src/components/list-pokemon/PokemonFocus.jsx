@@ -1,8 +1,7 @@
 import { useContext } from "react";
 import { PokemonsContext } from "../../context/PokemonsProvider";
-import { LocalStorageContext } from "../../context/LocalStorageProvider";
 import usePokeInfo from "../../hooks/usePokeInfo";
-import { feetToMeters, sumZeros } from "../../utils/getFunctions";
+import { feetToMeters, getLocal, sumZeros } from "../../utils/getFunctions";
 import defineIcon from "../../utils/getIcon";
 import PokeIcon from "../../assets/pokeball.svg";
 import "../../styles/pokemonFocus.css";
@@ -12,14 +11,15 @@ const PokemonFocusTest = () => {
   const { pokeInfo, pokeInfoLoading, setStateTab, stateTab } = usePokeInfo(
     pokeDetail.id
   );
-  const {unblocked} = useContext(LocalStorageContext)
+
+
   const handleCard = (e) => {
     e.preventDefault();
     if (e.target === e.currentTarget) {
       setDetailIsLoading(!detailIsLoading);
     }
   };
-  const tata = unblocked.includes(pokeDetail.id)
+  const tata = getLocal("players").includes(pokeDetail.id);
   return (
     <>
       <div>

@@ -14,7 +14,6 @@ const Pokemon = ({ url }) => {
     e.preventDefault();
     setPokeDetail(pokemonData);
     setDetailIsLoading(false);
-    levelDefined()
   };
 
   return (
