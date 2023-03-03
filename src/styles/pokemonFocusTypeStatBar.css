@@ -1,0 +1,116 @@
+/*stat bar color*/
+
+.stat-bar-fill.grass {
+    background: linear-gradient(to right,
+            rgba(41, 255, 198, 0.75),
+            rgba(32, 227, 178, 0.75),
+            rgba(12, 235, 235, 0.75));
+}
+
+.stat-bar-fill.fire {
+    background: linear-gradient(to right,
+            rgba(245, 175, 25, 0.75),
+            rgba(241, 39, 17, 0.75));
+}
+
+.stat-bar-fill.water {
+    background: linear-gradient(to right,
+            rgba(47, 128, 237, 0.75),
+            rgba(86, 204, 242, 0.75));
+}
+
+.stat-bar-fill.electric {
+    background: linear-gradient(90deg,
+            rgba(250, 224, 120, 0.75),
+            rgba(248, 208, 48, 0.75),
+            rgba(247, 174, 18, 0.75));
+}
+
+.stat-bar-fill.bug {
+    background: linear-gradient(to right,
+            rgba(141, 194, 111, 0.75),
+            rgba(118, 184, 82, 0.75));
+}
+
+.stat-bar-fill.dragon {
+    background-image: linear-gradient(315deg,
+            rgba(31, 209, 249, 0.65) 0%,
+            rgba(182, 33, 254, 0.65) 74%);
+}
+
+.stat-bar-fill.fairy {
+    background: linear-gradient(to right,
+            rgba(255, 221, 225, 0.75),
+            rgba(238, 156, 167, 0.75));
+}
+
+.stat-bar-fill.ghost {
+    background: linear-gradient(to right,
+            rgba(51, 51, 153, 0.75),
+            rgba(255, 0, 204, 0.75));
+}
+
+.stat-bar-fill.ground {
+    background: linear-gradient(to right,
+            rgba(255, 212, 82, 0.75),
+            rgba(84, 74, 125, 0.75));
+}
+
+.stat-bar-fill.ice {
+    background: linear-gradient(to right,
+            rgba(255, 255, 255, 0.75),
+            rgba(109, 213, 250, 0.75),
+            rgba(41, 128, 185, 0.75));
+}
+
+.stat-bar-fill.normal {
+    background: linear-gradient(to right,
+            rgba(222, 203, 164, 0.65),
+            rgba(62, 81, 81, 0.65));
+}
+
+.stat-bar-fill.poison {
+    background: linear-gradient(to right,
+            rgba(253, 239, 249, 0.75),
+            rgba(236, 56, 188, 0.75),
+            rgba(115, 3, 192, 0.75));
+}
+
+.stat-bar-fill.psychic {
+    background: linear-gradient(to right,
+            rgba(75, 192, 200, 0.6),
+            rgba(199, 121, 208, 0.6));
+}
+
+.stat-bar-fill.rock {
+    background: linear-gradient(to right,
+            rgba(209, 194, 125, 0.7),
+            rgba(184, 160, 56, 0.7),
+            rgba(120, 104, 36, 0.7));
+}
+
+.stat-bar-fill.steel {
+    background: linear-gradient(90deg,
+            rgba(209, 209, 224, 0.75),
+            rgba(184, 184, 208, 0.75),
+            rgba(120, 120, 135, 0.75));
+}
+
+.stat-bar-fill.fighting {
+    background: linear-gradient(to right,
+            rgba(227, 93, 91, 0.75),
+            rgba(229, 57, 53, 0.75));
+}
+
+.stat-bar-fill.flying {
+    background: linear-gradient(to right,
+            rgba(142, 84, 233, 0.75),
+            rgba(71, 118, 230, 0.75));
+}
+
+.stat-bar-fill.dark {
+    background: linear-gradient(to right,
+            rgba(161, 127, 224, 0.65),
+            rgba(89, 193, 115, 0.65));
+}
+

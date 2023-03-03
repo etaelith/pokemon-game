@@ -2,16 +2,23 @@ import { useContext } from "react";
 import { PokemonsContext } from "../../context/PokemonsProvider";
 import usePokeInfo from "../../hooks/usePokeInfo";
 import { feetToMeters, getLocal, sumZeros } from "../../utils/getFunctions";
+import useLoading from "../../hooks/useLoading";
+
+import chargeImg from "../../assets/chargeImg.svg";
 import defineIcon from "../../utils/getIcon";
 import PokeIcon from "../../assets/pokeball.svg";
+
 import "../../styles/pokemonFocus.css";
+import "../../styles/pokemonFocusType.css";
+import "../../styles/pokemonFocusTypeStatBar.css";
+
 const PokemonFocusTest = () => {
   const { pokeDetail, detailIsLoading, setDetailIsLoading } =
     useContext(PokemonsContext);
   const { pokeInfo, pokeInfoLoading, setStateTab, stateTab } = usePokeInfo(
     pokeDetail.id
   );
-
+  const { imageLoaded, setImageLoaded } = useLoading();
 
   const handleCard = (e) => {
     e.preventDefault();
@@ -19,7 +26,7 @@ const PokemonFocusTest = () => {
       setDetailIsLoading(!detailIsLoading);
     }
   };
-  const tata = getLocal("players").includes(pokeDetail.id);
+  const completed = getLocal("players").includes(pokeDetail.id);
   return (
     <>
       <div>
@@ -40,14 +47,7 @@ const PokemonFocusTest = () => {
                 className={`pokeDetail-top-container ${pokeDetail.types[0].type.name}`}
               >
                 <div className="pokeDetail-ui-container">
-                  <link to="/" onClick={handleCard} className="return">
-                    {/* <HiOutlineArrowNarrowLeft
-                      className="return"
-                      size="1.8rem"
-                      onClick={ReturnToList}
-                    /> */}
-                  </link>
-                  {/*  <CgPokemon size="2rem" /> */}
+                  <link to="/" onClick={handleCard} className="return"></link>
                 </div>
                 <div className="pokeDetail-title-container">
                   <div className="titleName">{pokeDetail.name}</div>
@@ -71,16 +71,25 @@ const PokemonFocusTest = () => {
                 </div>
                 <div className="pokeDetail-img-container">
                   <img
-                    className={`pokeDetail-img ${tata}`}
+                    alt="img loading"
+                    className="pokeDetail-img waiting"
+                    src={chargeImg}
+                    style={{ display: imageLoaded ? "none" : "block" }}
+                  ></img>
+                  <img
+                    className={`pokeDetail-img ${completed}`}
                     alt={`img ${pokeDetail.name}`}
                     src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${sumZeros(
                       pokeDetail.id,
                       3
                     )}.png`}
+                    onLoad={() => setImageLoaded(true)}
+                    onError={() => setImageLoaded(false)}
+                    style={{ display: imageLoaded ? "block" : "none" }}
                   />
                 </div>
               </div>
-              {!tata ? (
+              {!completed ? (
                 <div className="pokeDetail-info-container blocked-content">
                   <div>to see data of this pokemon complete the lvl: {}</div>
                 </div>

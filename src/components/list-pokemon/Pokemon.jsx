@@ -1,14 +1,17 @@
+import { useContext, useState } from "react";
 import { getCheck, levelDefined, sumZeros } from "../../utils/getFunctions";
-import { useContext } from "react";
-import defineIcon from "../../utils/getIcon";
-
-import { useFetch } from "../../hooks/useFetch";
 import { PokemonsContext } from "../../context/PokemonsProvider";
+import { useFetch } from "../../hooks/useFetch";
+
+import defineIcon from "../../utils/getIcon";
+import chargeImg from "../../assets/chargeImg.svg";
 import "../../styles/pokemonCard.css";
 import "../../styles/pokemonCardType.css";
+import useLoading from "../../hooks/useLoading";
 
 const Pokemon = ({ url }) => {
   const { setPokeDetail, setDetailIsLoading } = useContext(PokemonsContext);
+  const { imageLoaded, setImageLoaded } = useLoading();
   const pokemonData = useFetch(url);
   const handleCard = (e) => {
     e.preventDefault();
@@ -38,13 +41,25 @@ const Pokemon = ({ url }) => {
             </div>
             <div className="image-container">
               <img
+                className="pokemon-img waiting"
+                src={chargeImg}
+                alt="img loading"
+                style={{ display: imageLoaded ? "none" : "block" }}
+              ></img>
+              <img
                 className={`pokemon-img ${getCheck(url)}`}
                 src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${sumZeros(
                   pokemonData.id,
                   3
                 )}.png`}
+                onLoad={() => setImageLoaded(true)}
+                onError={() => setImageLoaded(false)}
+                style={{ display: imageLoaded ? "block" : "none" }}
               ></img>
-              <div className="circle-bg"></div>
+              <div
+                className="circle-bg"
+                style={{ display: imageLoaded ? "block" : "none" }}
+              ></div>
             </div>
 
             <div className="types-container">

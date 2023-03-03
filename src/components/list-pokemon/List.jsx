@@ -15,8 +15,11 @@ const List = () => {
           <div>loading</div>
         ) : (
           pokemons.map((p) => {
-            const element = <Pokemon key={p.name} url={p.url} />;
-            return element;
+            let check = p.url.split("/");
+            if (check[check.length - 2].length <= 4) {
+              const element = <Pokemon key={p.name} url={p.url} />;
+              return element;
+            }
           })
         )}
       </Container>

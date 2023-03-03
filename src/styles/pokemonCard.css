@@ -113,6 +113,10 @@
     z-index: 2;
 }
 
+.image-container .pokemon-img.waiting {
+    filter: opacity(0.3);
+}
+
 .image-container .pokemon-img.uncatched {
     filter: brightness(0)
 }
