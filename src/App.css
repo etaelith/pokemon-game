@@ -1,5 +1,6 @@
 #root {
-  margin: auto
+  margin: auto;
+  margin-bottom: 2rem;
 }
 
 * {

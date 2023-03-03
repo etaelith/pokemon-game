@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import useError from "../hooks/useError";
 export const PokemonsContext = createContext();
 const PokemonsProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
@@ -12,7 +13,6 @@ const PokemonsProvider = ({ children }) => {
   const [nextURL, setNextURL] = useState(null);
   const [count, setCount] = useState(0);
 
-
   useEffect(() => {
     setLoading(true);
     async function fetchData(id) {
@@ -25,7 +25,7 @@ const PokemonsProvider = ({ children }) => {
             setPokemons(res.results.map((p) => p));
           });
       } catch (e) {
-        console.log(e);
+        useError();
       } finally {
         setLoading(false);
       }
@@ -33,8 +33,12 @@ const PokemonsProvider = ({ children }) => {
     fetchData(currentURL);
   }, [currentURL]);
   const goNext = () => {
-    setCurrentURL(nextURL);
-    setCount(count + 1);
+    if (count > 50) {
+      setNextURL(null);
+    } else {
+      setCurrentURL(nextURL);
+      setCount(count + 1);
+    }
   };
   const goPrev = () => {
     setCurrentURL(prevURL);
