@@ -1,13 +1,13 @@
-import { useContext, useState } from "react";
-import { getCheck, levelDefined, sumZeros } from "../../utils/getFunctions";
-import { PokemonsContext } from "../../context/PokemonsProvider";
-import { useFetch } from "../../hooks/useFetch";
+import { useContext } from "react";
+import { getCheck, sumZeros } from "@/utils/getFunctions";
+import { PokemonsContext } from "@/context/PokemonsProvider";
+import { useFetch } from "@/hooks/useFetch";
 
-import defineIcon from "../../utils/getIcon";
-import chargeImg from "../../assets/chargeImg.svg";
-import "../../styles/pokemonCard.css";
-import "../../styles/pokemonCardType.css";
-import useLoading from "../../hooks/useLoading";
+import defineIcon from "@/utils/getIcon";
+import chargeImg from "@/assets/chargeImg.svg";
+import "@/styles/pokemonCard.css";
+import "@/styles/pokemonCardType.css";
+import useLoading from "@/hooks/useLoading";
 
 const Pokemon = ({ url }) => {
   const { setPokeDetail, setDetailIsLoading } = useContext(PokemonsContext);

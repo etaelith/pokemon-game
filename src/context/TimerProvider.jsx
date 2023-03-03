@@ -1,5 +1,5 @@
 import { createContext, useEffect, useReducer } from "react";
-import { initialState, reducer } from "./useReducer";
+import { initialState, reducer } from "@/reducer/useReducer";
 
 export const TimerContext = createContext();
 const TimerProvider = ({ children }) => {

@@ -2,7 +2,7 @@ import {
   getImages,
   levelDefined,
   sumZeros,
-} from "../utils/getFunctions";
+} from "@/utils/getFunctions";
 
 export const initialState = {
   lvl: 1,

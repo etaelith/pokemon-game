@@ -1,6 +1,6 @@
 import { createContext, useEffect, useReducer } from "react";
-import { getLocal } from "../utils/getFunctions";
-import { initialState, reducer } from "../hooks/useReducerLocal";
+import { getLocal } from "@/utils/getFunctions";
+import { initialState, reducer } from "@/hooks/useReducerLocal";
 
 export const LocalContext = createContext();
 

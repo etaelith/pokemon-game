@@ -1,4 +1,4 @@
-import { getLocal, levelDefined, setLocal } from "../utils/getFunctions";
+import { getLocal, levelDefined, setLocal } from "@/utils/getFunctions";
 
 export const initialState = {
   isActive: false,

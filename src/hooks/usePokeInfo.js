@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { PokemonsContext } from "../context/PokemonsProvider";
+import { PokemonsContext } from "@/context/PokemonsProvider";
 const usePokeInfo = (pokeDetail) => {
   const { detailIsLoading } = useContext(PokemonsContext);
   const [stateTab, setStateTab] = useState(1);
