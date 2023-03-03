@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import useError from "../hooks/useError";
+import useError from "@/hooks/useError";
 export const PokemonsContext = createContext();
 const PokemonsProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { TimerContext } from "../../reducer/TimerProvider";
+import { TimerContext } from "@/context/TimerProvider";
 
 import MemoTest from "./MemoTest";
 import Tittle from "./Tittle";

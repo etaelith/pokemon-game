@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { LocalContext } from "./LocalProvider";
-import { getLocal, setLocal } from "../utils/getFunctions";
-import {  TimerContext } from "../reducer/TimerProvider";
+import { getLocal, setLocal } from "@/utils/getFunctions";
+import { TimerContext } from "@/context/TimerProvider";
 export const MemoContext = createContext();
 const MemoProvider = ({ children }) => {
   const { state, lvlUp } = useContext(LocalContext);

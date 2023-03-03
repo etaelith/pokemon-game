@@ -1,4 +1,4 @@
-import { formatTime } from "../../utils/getFunctions";
+import { formatTime } from "@/utils/getFunctions";
 
 const Timer = ({ time }) => {
   return (

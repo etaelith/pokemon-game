@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { PokemonsContext } from "../../context/PokemonsProvider";
+import { PokemonsContext } from "@/context/PokemonsProvider";
 import Pokemon from "./Pokemon";
 
 import Container from "../Container";

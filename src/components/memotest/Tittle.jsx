@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { TimerContext } from "../../reducer/TimerProvider";
-import { getLocal } from "../../utils/getFunctions";
+import { TimerContext } from "@/context/TimerProvider";
+import { getLocal } from "@/utils/getFunctions";
 import Timer from "./Timer";
-import "../../styles/tittle.css";
-import { LocalContext } from "../../context/LocalProvider";
+import "@/styles/tittle.css";
+import { LocalContext } from "@/context/LocalProvider";
 const Tittle = () => {
   const { handleStart, time } = useContext(TimerContext);
   const { state } = useContext(LocalContext);

@@ -1,16 +1,16 @@
 import { useContext } from "react";
-import { PokemonsContext } from "../../context/PokemonsProvider";
-import usePokeInfo from "../../hooks/usePokeInfo";
-import { feetToMeters, getLocal, sumZeros } from "../../utils/getFunctions";
-import useLoading from "../../hooks/useLoading";
+import { PokemonsContext } from "@/context/PokemonsProvider";
+import usePokeInfo from "@/hooks/usePokeInfo";
+import { feetToMeters, getLocal, sumZeros } from "@/utils/getFunctions";
+import useLoading from "@/hooks/useLoading";
 
-import chargeImg from "../../assets/chargeImg.svg";
-import defineIcon from "../../utils/getIcon";
-import PokeIcon from "../../assets/pokeball.svg";
+import chargeImg from "@/assets/chargeImg.svg";
+import defineIcon from "@/utils/getIcon";
+import PokeIcon from "@/assets/pokeball.svg";
 
-import "../../styles/pokemonFocus.css";
-import "../../styles/pokemonFocusType.css";
-import "../../styles/pokemonFocusTypeStatBar.css";
+import "@/styles/pokemonFocus.css";
+import "@/styles/pokemonFocusType.css";
+import "@/styles/pokemonFocusTypeStatBar.css";
 
 const PokemonFocusTest = () => {
   const { pokeDetail, detailIsLoading, setDetailIsLoading } =
