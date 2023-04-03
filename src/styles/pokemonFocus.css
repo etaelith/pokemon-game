@@ -154,10 +154,12 @@
     border-top-right-radius: 25px;
 }
 
-.pokeDetail-info-container.blocked-content {
+.pokeDetail-info-container .blocked-content {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
 }
 
 .pokeDetail-tabsInfo-container {
