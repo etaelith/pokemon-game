@@ -1,13 +1,19 @@
 import { useContext } from "react";
-import { getCheck, sumZeros } from "@/utils/getFunctions";
 import { PokemonsContext } from "@/context/PokemonsProvider";
 import { useFetch } from "@/hooks/useFetch";
-
+import useLoading from "@/hooks/useLoading";
+import { getCheck, sumZeros } from "@/utils/getFunctions";
 import defineIcon from "@/utils/getIcon";
 import chargeImg from "@/assets/chargeImg.svg";
 import "@/styles/pokemonCard.css";
 import "@/styles/pokemonCardType.css";
-import useLoading from "@/hooks/useLoading";
+
+/**
+ * Renders a card for a single pokemon, including its name, number, image, and types.
+ *
+ * @param {string} url - The URL for the pokemon's data.
+ * @returns {JSX.Element} - The rendered component.
+ */
 
 const Pokemon = ({ url }) => {
   const { setPokeDetail, setDetailIsLoading } = useContext(PokemonsContext);
